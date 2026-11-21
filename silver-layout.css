@@ -1,0 +1,53 @@
+/* Silver concept: separate editorial text and unobscured photograph. */
+:root {
+  --c-canvas: #0c0d0f;
+  --c-surface: #17191c;
+  --c-ink: #f1f2f4;
+  --c-ink-soft: #aeb5bd;
+  --c-accent: #d3dae1;
+  --c-accent-ink: #0c0d0f;
+  --c-accent-deep: #d3dae1;
+}
+.s-hero {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 4vw, 56px);
+  min-height: 0;
+  align-items: center;
+  isolation: auto;
+}
+.s-hero__text {
+  position: static;
+  order: 0;
+  max-width: none;
+  min-width: 0;
+  padding: 0;
+}
+.s-hero h1 { font-size: clamp(2.3rem, 3.8vw, 3.6rem); }
+.s-hero__img {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  order: 0;
+  min-width: 0;
+  min-height: 0;
+}
+.s-hero__img::before { content: none; }
+.s-hero__img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+  opacity: 1;
+}
+.s-btn { background: var(--c-accent); color: var(--c-accent-ink); }
+.s-hero__img::after { bottom: 10px; right: 10px; }
+@media (max-width: 800px) {
+  .s-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .s-hero__text { order: 0; padding: 0; }
+  .s-hero__img { order: 1; min-height: 0; }
+  .s-hero h1 { font-size: clamp(2.1rem, 7.8vw, 3rem); }
+}
